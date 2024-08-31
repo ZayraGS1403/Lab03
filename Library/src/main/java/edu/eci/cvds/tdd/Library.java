@@ -37,6 +37,8 @@ public class Library {
     public boolean addBook(Book book) {
         //TODO Implement the logic to add a new book into the map.
         return false;
+
+        
     }
 
     /**
@@ -56,6 +58,8 @@ public class Library {
         //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
         return null;
     }
+
+
 
     /**
      * This method return a loan, meaning that the amount of books should be increased by 1, the status of the Loan
