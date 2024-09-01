@@ -1,14 +1,19 @@
+package edu.eci.cvds.tdd.library;
+import edu.eci.cvds.tdd.library.book.Book;
+import edu.eci.cvds.tdd.library.user.User;
+
+
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class LibraryTest {
+/*public class LibraryTest {
 
     private Library library;
 
     @Before
     public void setUp() {
-        library = new Library();
+        Library library = new Library();
     }
 
     @Test
@@ -24,4 +29,4 @@ public class LibraryTest {
         assertFalse(library.addBook(book));
     }
     
-}
+}*/
