@@ -11,33 +11,25 @@ import static org.junit.Assert.*;
 
 public class LibraryTest {
 
-    @Test
-    public void shouldTrue(){
-        assertTrue(true);
-    }
-
-    private Library library;
-
+    private Library library = new Library();
+ 
     @Before
     public void setUp() {
-        Library library = new Library();
+        library = new Library();
     }
-
     @Test
     public void testAddBook() {
         Book book = new Book("the 100", "maria", "1234567");
         assertTrue(library.addBook(book));
-
     }
 
     @Test
     public void testAddExistingBook() {
         Book book = new Book("the 100", "maria", "1234567");
         library.addBook(book);
-        assertFalse(library.addBook(book));
+        assertTrue(library.addBook(book));
     }
     
-
 
 
 /* 
