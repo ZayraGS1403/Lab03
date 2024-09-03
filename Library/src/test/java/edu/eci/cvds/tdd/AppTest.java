@@ -1,6 +1,6 @@
 package edu.eci.cvds.tdd;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
