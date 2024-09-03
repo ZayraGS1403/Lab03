@@ -24,6 +24,8 @@ public class Loan {
         return user;
     }
 
+    
+
     public void setUser(User user) {
         this.user = user;
     }
