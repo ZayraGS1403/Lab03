@@ -121,4 +121,5 @@ public class Library {
     public Map<Book, Integer> getBookAmount() {
         return books;
     }
+    
 }
