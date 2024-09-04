@@ -3,11 +3,8 @@ import edu.eci.cvds.tdd.library.book.Book;
 import edu.eci.cvds.tdd.library.loan.Loan;
 import edu.eci.cvds.tdd.library.loan.LoanStatus;
 import edu.eci.cvds.tdd.library.user.User;
-<<<<<<< HEAD
-import java.util.Date;
-=======
 import java.time.LocalDate;
->>>>>>> fd1f29658f336d179508c01969730297ed993238
+
 
 
 import org.junit.Before;
@@ -37,11 +34,11 @@ public class LibraryTest {
     }
 
 
-<<<<<<< HEAD
-    /* @Test
+
+    @Test
     public void testLoanABook() {
         // Create a new user
-        User user = new User();
+        User user = new User("John Doe", "1234");
         library.addUser(user);
 
         // Create a new book
@@ -56,48 +53,68 @@ public class LibraryTest {
         assertEquals(book, loan.getBook());
         assertEquals(user, loan.getUser());
         assertEquals(LoanStatus.ACTIVE, loan.getStatus());
-    } */
-    
+    } 
+   
+    // Test para cuando se crea un prestamo y se disminuye la cantidad de libros
+    @Test
+    public void shouldCreateLoanAndDecreaseBookCount() {
+        User user = new User("John Doe", "9563");
+        Book book = new Book("The Catcher in the Rye", "J.D. Salinger", "9780316769488");
+        library.addUser(user);
+        library.addBook(book);
+        library.loanABook(user.getId(), book.getIsbn());
+        int remainingBooks = library.getBookAmount().get(book);
+        assertEquals(0, remainingBooks);
+    }
+
+    // Test para cuando se retorna un libro y se aumenta la cantidad de libros
+    @Test
+    public void shouldReturnLoanAndIncreaseBookCount() {
+        User user = new User("John Doe", "9563");
+        Book book = new Book("The Catcher in the Rye", "J.D. Salinger", "9780316769488");
+        library.addUser(user);
+        library.addBook(book);
+        Loan loan = library.loanABook(user.getId(), book.getIsbn());
+        library.returnLoan(loan);
+        int remainingBooks = library.getBookAmount().get(book);
+        assertEquals(1, remainingBooks);
+    }
+
+    //Test para cuando retornan un libro la fecha sea la actual
+    @Test   
+    public void shouldReturnLoanAndSetReturnDate() {
+        User user = new User("John Doe", "9563");
+        Book book = new Book("The Catcher in the Rye", "J.D. Salinger", "9780316769488");
+        library.addUser(user);
+        library.addBook(book);
+        Loan loan = library.loanABook(user.getId(), book.getIsbn());
+        library.returnLoan(loan);
+        assertEquals(LocalDate.now(), loan.getReturnDate());
+    }
  
-=======
-    //revisa que el loan tenga la fecha actual  
+    //Test para cuando se retorna un libro y se cambia el estado a RETURNED
     @Test
-    public void shouldCreateLoanWithCurrentDate() {
+    public void shouldReturnLoanAndSetReturnedStatus() {
         User user = new User("John Doe", "9563");
         Book book = new Book("The Catcher in the Rye", "J.D. Salinger", "9780316769488");
         library.addUser(user);
         library.addBook(book);
         Loan loan = library.loanABook(user.getId(), book.getIsbn());
-        assertEquals(loan.getLoanDate(), LocalDate.now());
+        library.returnLoan(loan);
+        assertEquals(LoanStatus.RETURNED, loan.getStatus());
     }
 
-    //revisa que el loan tenga el estado ACTIVE
+    //Test para validar que existe un prestamo
     @Test
-    public void shouldCreateLoanWithActiveStatus() {
-        User user = new User("John Doe", "9563");
-        Book book = new Book("The Catcher in the Rye", "J.D. Salinger", "9780316769488");
-        library.addUser(user);
-        library.addBook(book);
-        Loan loan = library.loanABook(user.getId(), book.getIsbn());
-        assertEquals(loan.getStatus(), LoanStatus.ACTIVE);
-    }
-
-    //revisa que el loan tenga el estado RETURNED
-    @Test
-    public void shouldReturnLoanWithReturnedStatus() {
+    public void shouldReturnLoan() {
         User user = new User("John Doe", "9563");
         Book book = new Book("The Catcher in the Rye", "J.D. Salinger", "9780316769488");
         library.addUser(user);
         library.addBook(book);
         Loan loan = library.loanABook(user.getId(), book.getIsbn());
         Loan returnedLoan = library.returnLoan(loan);
-        assertEquals(returnedLoan.getStatus(), LoanStatus.RETURNED);
+        assertEquals(loan, returnedLoan);
     }
->>>>>>> fd1f29658f336d179508c01969730297ed993238
-
-
-
-
 }
 
 

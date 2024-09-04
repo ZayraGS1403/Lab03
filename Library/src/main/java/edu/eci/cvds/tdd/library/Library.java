@@ -86,9 +86,6 @@ public class Library {
         return null;
     }
     
-
-
-
     /**
      * This method returns a loan, meaning that the amount of books should be increased by 1, the status of the Loan
      * in the loan list should be {@link edu.eci.cvds.tdd.library.loan.LoanStatus#RETURNED} and the loan return
@@ -121,5 +118,4 @@ public class Library {
     public Map<Book, Integer> getBookAmount() {
         return books;
     }
-    
 }
