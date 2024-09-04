@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: edu.eci.cvds.tdd.AppTest
 -------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.152 s -- in edu.eci.cvds.tdd.AppTest
-=======
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s -- in edu.eci.cvds.tdd.AppTest
->>>>>>> fd1f29658f336d179508c01969730297ed993238
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.090 s -- in edu.eci.cvds.tdd.AppTest
