@@ -40,27 +40,27 @@ La carpeta fue creada con éxito
 
 ### SONARQUBE
 
-ejecutamos los comando para la creacion de la imagen en docker 
+Ejecutamos los comando para la creación de la imagen en docker 
 
 ![alt text](images/image-4%20copy.png)
 
-creamos el token
+Creamos el token
 
 ![alt text](images/image-3%20copy.png)
 
-se añade sonar al archivo pom del proyecto
+Se añade sonar al archivo pom.xml del proyecto
 
 ![alt text](images/image%20copy.png)
 
-se añaden las propiedasdes de sonarqube y jacoco
+Se añaden las propiedades de sonarqube y Jacoco
 
 ![alt text](images/image-1%20copy.png)
 
-#### se compila de nuevo jacoco
+#### Se compila de nuevo Jacoco
 
 ![alt text](images/image-2%20copy.png)
 
-#### generamos la integracion de sonarqube
+#### Generamos la integración de sonarqube
 
 ![alt text](images/image-5%20copy.png)
 
@@ -68,10 +68,10 @@ se añaden las propiedasdes de sonarqube y jacoco
 
 ### PRUEBAS UNITARIAS Y TDD
 
-Temos el jacoco para saber el nivel de testeo del codigo
+Temos el jacoco para saber el nivel de testeo del código
 ![alt text](images/image-10.png)
 
-#### Test antes de la implementacion de la clase addBook
+#### Test antes de la implementación de la clase addBook
 ![alt text](images/image-1.png)
 
 #### Test despues de implementar la clase addBook
@@ -79,12 +79,12 @@ Temos el jacoco para saber el nivel de testeo del codigo
 ![alt text](images/image.png)
 
 
-#### Test antes de la implementacion de la clase loan
+#### Test antes de la implementación de la clase loan
 
 ![alt text](images/image-2.png)
 
 
-#### Test despues de la implementacion de la clase loan
+#### Test despues de la implementación de la clase loan
 
 ![alt text](images/image-11.png)
 
@@ -93,5 +93,4 @@ Temos el jacoco para saber el nivel de testeo del codigo
 
 Despues de crear los test de las clases realizamos un reporte en Jacoco para ver el estado del código
 
-![alt text](images/image-12.png)
-
+![alt text](images/jacoco.png)
