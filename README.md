@@ -58,4 +58,13 @@ Temos el jacoco para saber el nivel de testeo del codigo
 
 ![alt text](image-2.png)
 
+
 #### Test despues de la implementacion de la clase loan
+
+![alt text](image-11.png)
+
+
+### Reporte Test
+
+Despues de crear los test de las clases realizamos un reporte en Jacoco para ver el estado del código
+![alt text](image-12.png)
