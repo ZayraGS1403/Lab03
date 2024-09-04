@@ -2,12 +2,15 @@
 
 import edu.eci.cvds.tdd.library.book.Book;
 import edu.eci.cvds.tdd.library.loan.Loan;
+import edu.eci.cvds.tdd.library.loan.LoanStatus;
 import edu.eci.cvds.tdd.library.user.User;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Date;
 
 /**
  * Library responsible for manage the loans and the users.
@@ -18,11 +21,11 @@ public class Library {
     private final Map&lt;Book, Integer&gt; books;
     private final List&lt;Loan&gt; loans;
 
-<span class="fc" id="L21">    public Library() {</span>
-<span class="fc" id="L22">        users = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L23">        books = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L24">        loans = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L25">    }</span>
+<span class="fc" id="L24">    public Library() {</span>
+<span class="fc" id="L25">        users = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L26">        books = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L27">        loans = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L28">    }</span>
 
     /**
      * Adds a new {@link edu.eci.cvds.tdd.library.book.Book} into the system, the book is store in a Map that contains
@@ -35,12 +38,12 @@ public class Library {
      * @return true if the book was stored false otherwise.
      */
     public boolean addBook(Book book) {
-<span class="fc bfc" id="L38" title="All 2 branches covered.">        if (books.containsKey(book)) {</span>
-<span class="fc" id="L39">            books.put(book, books.get(book) + 1);</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        if (books.containsKey(book)) {</span>
+<span class="fc" id="L42">            books.put(book, books.get(book) + 1);</span>
         } else {
-<span class="fc" id="L41">            books.put(book, 1);</span>
+<span class="fc" id="L44">            books.put(book, 1);</span>
         }
-<span class="fc" id="L43">        return false;</span>
+<span class="fc" id="L46">        return true;</span>
     }
 
     /**
@@ -57,29 +60,63 @@ public class Library {
      * @return The new created loan.
      */
     public Loan loanABook(String userId, String isbn) {
-        //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
-<span class="nc" id="L61">        return null;</span>
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">        for (Book book : books.keySet()) {</span>
+<span class="pc bpc" id="L64" title="2 of 4 branches missed.">            if (book.getIsbn().equals(isbn) &amp;&amp; books.get(book) &gt; 0) {</span>
+
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">                for (User user : users) {</span>
+<span class="pc bpc" id="L67" title="1 of 2 branches missed.">                    if (user.getId().equals(userId)) {</span>
+
+<span class="pc bpc" id="L69" title="1 of 2 branches missed.">                        for (Loan loan : loans) {</span>
+<span class="nc bnc" id="L70" title="All 4 branches missed.">                            if (loan.getUser().equals(user) &amp;&amp; loan.getBook().equals(book)</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">                                    &amp;&amp; loan.getStatus().equals(LoanStatus.ACTIVE)) {</span>
+<span class="nc" id="L72">                                return null;</span>
+                            }
+<span class="nc" id="L74">                        }</span>
+<span class="fc" id="L75">                        books.put(book, books.get(book) - 1);</span>
+<span class="fc" id="L76">                        Loan loan = new Loan();</span>
+<span class="fc" id="L77">                        loan.setBook(book);</span>
+<span class="fc" id="L78">                        loan.setUser(user);</span>
+<span class="fc" id="L79">                        loan.setStatus(LoanStatus.ACTIVE);</span>
+<span class="fc" id="L80">                        loans.add(loan);</span>
+<span class="fc" id="L81">                        return loan;</span>
+                    }
+<span class="nc" id="L83">                }</span>
+            }
+<span class="nc" id="L85">        }</span>
+<span class="nc" id="L86">        return null;</span>
     }
-
-
-
+    
     /**
-     * This method return a loan, meaning that the amount of books should be increased by 1, the status of the Loan
+     * This method returns a loan, meaning that the amount of books should be increased by 1, the status of the Loan
      * in the loan list should be {@link edu.eci.cvds.tdd.library.loan.LoanStatus#RETURNED} and the loan return
-     * date should be the current date, validate that the loan exist.
+     * date should be the current date, validate that the loan exists.
      *
      * @param loan loan to return.
      *
      * @return the loan with the RETURNED status.
      */
-    public Loan returnLoan(Loan loan) {
-        //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
-<span class="nc" id="L77">        return null;</span>
-    }
 
+     //Metodo que mientras recorre la lista de loans, si encuentra el loan que se quiere retornar, cambia el estado a RETURNED y cambia la fecha de retorno a la fecha actual e incrementa la candad de libros dsponibles
+     public Loan returnLoan(Loan loan) {
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">         for (Loan ln : loans) {</span>
+<span class="pc bpc" id="L102" title="1 of 2 branches missed.">             if (ln.equals(loan)) {</span>
+<span class="fc" id="L103">                 books.put(ln.getBook(), books.get(ln.getBook()) + 1);</span>
+<span class="fc" id="L104">                 ln.setStatus(LoanStatus.RETURNED);</span>
+<span class="fc" id="L105">                 ln.setReturnDate(LocalDate.now());</span>
+<span class="fc" id="L106">                 return ln;</span>
+             }
+<span class="nc" id="L108">         }</span>
+<span class="nc" id="L109">         return null;</span>
+     }
+    
+ 
     public boolean addUser(User user) {
-<span class="nc" id="L81">        return users.add(user);</span>
+<span class="fc" id="L114">        return users.add(user);</span>
     }
 
+    //clase que retorna un map del libro y la cantidad de libros disponibles
+    public Map&lt;Book, Integer&gt; getBookAmount() {
+<span class="fc" id="L119">        return books;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
