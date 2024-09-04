@@ -23,7 +23,11 @@ public class Loan {
     public User getUser() {
         return user;
     }
+<<<<<<< HEAD
+    
+=======
 
+>>>>>>> fd1f29658f336d179508c01969730297ed993238
     public void setUser(User user) {
         this.user = user;
     }

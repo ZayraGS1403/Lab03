@@ -54,3 +54,8 @@ Temos el jacoco para saber el nivel de testeo del codigo
 ![alt text](image.png)
 
 
+#### Test antes de la implementacion de la clase loan
+
+![alt text](image-2.png)
+
+#### Test despues de la implementacion de la clase loan

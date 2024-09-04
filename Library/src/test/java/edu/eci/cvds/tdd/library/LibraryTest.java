@@ -3,7 +3,11 @@ import edu.eci.cvds.tdd.library.book.Book;
 import edu.eci.cvds.tdd.library.loan.Loan;
 import edu.eci.cvds.tdd.library.loan.LoanStatus;
 import edu.eci.cvds.tdd.library.user.User;
+<<<<<<< HEAD
+import java.util.Date;
+=======
 import java.time.LocalDate;
+>>>>>>> fd1f29658f336d179508c01969730297ed993238
 
 
 import org.junit.Before;
@@ -33,6 +37,29 @@ public class LibraryTest {
     }
 
 
+<<<<<<< HEAD
+    /* @Test
+    public void testLoanABook() {
+        // Create a new user
+        User user = new User();
+        library.addUser(user);
+
+        // Create a new book
+        Book book = new Book("The Catcher in the Rye", "J.D. Salinger", "1234567890");
+        library.addBook(book);
+
+        // Loan the book to the user
+        Loan loan = library.loanABook(user.getId(), book.getIsbn());
+
+        // Verify that the loan was created successfully
+        assertNotNull(loan);
+        assertEquals(book, loan.getBook());
+        assertEquals(user, loan.getUser());
+        assertEquals(LoanStatus.ACTIVE, loan.getStatus());
+    } */
+    
+ 
+=======
     //revisa que el loan tenga la fecha actual  
     @Test
     public void shouldCreateLoanWithCurrentDate() {
@@ -66,6 +93,7 @@ public class LibraryTest {
         Loan returnedLoan = library.returnLoan(loan);
         assertEquals(returnedLoan.getStatus(), LoanStatus.RETURNED);
     }
+>>>>>>> fd1f29658f336d179508c01969730297ed993238
 
 
 

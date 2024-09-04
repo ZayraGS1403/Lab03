@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Date;
 
 /**
  * Library responsible for manage the loans and the users.
@@ -43,6 +44,7 @@ public class Library {
             books.put(book, 1);
         }
         return true;
+        return true;
     }
 
     /**
@@ -59,16 +61,39 @@ public class Library {
      * @return The new created loan.
      */
     public Loan loanABook(String userId, String isbn) {
-        //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
+        for (Book book : books.keySet()) {
+            if (book.getIsbn().equals(isbn) && books.get(book) > 0) {
+
+                for (User user : users) {
+                    if (user.getId().equals(userId)) {
+
+                        for (Loan loan : loans) {
+                            if (loan.getUser().equals(user) && loan.getBook().equals(book)
+                                    && loan.getStatus().equals(LoanStatus.ACTIVE)) {
+                                return null;
+                            }
+                        }
+                        books.put(book, books.get(book) - 1);
+                        Loan loan = new Loan();
+                        loan.setBook(book);
+                        loan.setUser(user);
+                        loan.setStatus(LoanStatus.ACTIVE);
+                        loans.add(loan);
+                        return loan;
+                    }
+                }
+            }
+        }
         return null;
     }
+    
 
 
 
     /**
-     * This method return a loan, meaning that the amount of books should be increased by 1, the status of the Loan
+     * This method returns a loan, meaning that the amount of books should be increased by 1, the status of the Loan
      * in the loan list should be {@link edu.eci.cvds.tdd.library.loan.LoanStatus#RETURNED} and the loan return
-     * date should be the current date, validate that the loan exist.
+     * date should be the current date, validate that the loan exists.
      *
      * @param loan loan to return.
      *
@@ -77,17 +102,18 @@ public class Library {
 
      //Metodo que mientras recorre la lista de loans, si encuentra el loan que se quiere retornar, cambia el estado a RETURNED y cambia la fecha de retorno a la fecha actual e incrementa la candad de libros dsponibles
      public Loan returnLoan(Loan loan) {
-        for (Loan ln : loans) {
-            if (ln.equals(loan)) {
-                books.put(ln.getBook(), books.get(ln.getBook()) + 1);
-                ln.setStatus(LoanStatus.RETURNED);
-                ln.setReturnDate(LocalDate.now());
-                return ln;
-            }
-        }
-        return null;
-    }
-
+         for (Loan ln : loans) {
+             if (ln.equals(loan)) {
+                 books.put(ln.getBook(), books.get(ln.getBook()) + 1);
+                 ln.setStatus(LoanStatus.RETURNED);
+                 ln.setReturnDate(LocalDate.now());
+                 return ln;
+             }
+         }
+         return null;
+     }
+    
+ 
     public boolean addUser(User user) {
         return users.add(user);
     }

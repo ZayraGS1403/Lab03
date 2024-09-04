@@ -1,6 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: edu.eci.cvds.tdd.library.LibraryTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
+Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.008 s <<< FAILURE! -- in edu.eci.cvds.tdd.library.LibraryTest
+edu.eci.cvds.tdd.library.LibraryTest.testLoanABookSuccessfully -- Time elapsed: 0 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "edu.eci.cvds.tdd.library.loan.Loan.getBook()" because "loan" is null
+	at edu.eci.cvds.tdd.library.LibraryTest.testLoanABookSuccessfully(LibraryTest.java:50)
+=======
 Tests run: 5, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0 s <<< FAILURE! -- in edu.eci.cvds.tdd.library.LibraryTest
 edu.eci.cvds.tdd.library.LibraryTest.shouldReturnLoanWithReturnedStatus -- Time elapsed: 0 s <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "edu.eci.cvds.tdd.library.loan.Loan.getStatus()" because "returnedLoan" is null
@@ -61,6 +67,7 @@ java.lang.NullPointerException: Cannot invoke "edu.eci.cvds.tdd.library.loan.Loa
 edu.eci.cvds.tdd.library.LibraryTest.shouldCreateLoanWithCurrentDate -- Time elapsed: 0 s <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "edu.eci.cvds.tdd.library.loan.Loan.getLoanDate()" because "loan" is null
 	at edu.eci.cvds.tdd.library.LibraryTest.shouldCreateLoanWithCurrentDate(LibraryTest.java:44)
+>>>>>>> fd1f29658f336d179508c01969730297ed993238
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
