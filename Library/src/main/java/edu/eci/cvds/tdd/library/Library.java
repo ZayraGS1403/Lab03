@@ -2,8 +2,10 @@ package edu.eci.cvds.tdd.library;
 
 import edu.eci.cvds.tdd.library.book.Book;
 import edu.eci.cvds.tdd.library.loan.Loan;
+import edu.eci.cvds.tdd.library.loan.LoanStatus;
 import edu.eci.cvds.tdd.library.user.User;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,7 +42,7 @@ public class Library {
         } else {
             books.put(book, 1);
         }
-        return false;
+        return true;
     }
 
     /**
@@ -72,8 +74,17 @@ public class Library {
      *
      * @return the loan with the RETURNED status.
      */
-    public Loan returnLoan(Loan loan) {
-        //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
+
+     //Metodo que mientras recorre la lista de loans, si encuentra el loan que se quiere retornar, cambia el estado a RETURNED y cambia la fecha de retorno a la fecha actual e incrementa la candad de libros dsponibles
+     public Loan returnLoan(Loan loan) {
+        for (Loan ln : loans) {
+            if (ln.equals(loan)) {
+                books.put(ln.getBook(), books.get(ln.getBook()) + 1);
+                ln.setStatus(LoanStatus.RETURNED);
+                ln.setReturnDate(LocalDate.now());
+                return ln;
+            }
+        }
         return null;
     }
 
@@ -81,4 +92,8 @@ public class Library {
         return users.add(user);
     }
 
+    //clase que retorna un map del libro y la cantidad de libros disponibles
+    public Map<Book, Integer> getBookAmount() {
+        return books;
+    }
 }
