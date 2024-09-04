@@ -3,6 +3,7 @@ import edu.eci.cvds.tdd.library.book.Book;
 import edu.eci.cvds.tdd.library.loan.Loan;
 import edu.eci.cvds.tdd.library.loan.LoanStatus;
 import edu.eci.cvds.tdd.library.user.User;
+import java.util.Date;
 
 
 import org.junit.Before;
@@ -29,19 +30,29 @@ public class LibraryTest {
         library.addBook(book);
         assertTrue(library.addBook(book));
     }
-    
 
 
-/* 
-    @Test
-    public void testLoanABookSuccessfully() {
-        Loan loan = library.loanABook("user1", "isbn1");
+    /* @Test
+    public void testLoanABook() {
+        // Create a new user
+        User user = new User();
+        library.addUser(user);
+
+        // Create a new book
+        Book book = new Book("The Catcher in the Rye", "J.D. Salinger", "1234567890");
+        library.addBook(book);
+
+        // Loan the book to the user
+        Loan loan = library.loanABook(user.getId(), book.getIsbn());
+
+        // Verify that the loan was created successfully
         assertNotNull(loan);
-        assertEquals("Pepito", loan.getUser());
-        assertEquals("isbn1", loan.getIsbn());
+        assertEquals(book, loan.getBook());
+        assertEquals(user, loan.getUser());
         assertEquals(LoanStatus.ACTIVE, loan.getStatus());
-        assertEquals(new Date(), loan.getLoanDate());
     } */
+    
+ 
 
 
 
