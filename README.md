@@ -40,6 +40,31 @@ La carpeta fue creada con éxito
 
 ### SONARQUBE
 
+ejecutamos los comando para la creacion de la imagen en docker 
+
+![alt text](images/image-4%20copy.png)
+
+creamos el token
+
+![alt text](images/image-3%20copy.png)
+
+se añade sonar al archivo pom del proyecto
+
+![alt text](images/image%20copy.png)
+
+se añaden las propiedasdes de sonarqube y jacoco
+
+![alt text](images/image-1%20copy.png)
+
+#### se compila de nuevo jacoco
+
+![alt text](images/image-2%20copy.png)
+
+#### generamos la integracion de sonarqube
+
+![alt text](images/image-5%20copy.png)
+
+
 
 ### PRUEBAS UNITARIAS Y TDD
 
@@ -69,3 +94,4 @@ Temos el jacoco para saber el nivel de testeo del codigo
 Despues de crear los test de las clases realizamos un reporte en Jacoco para ver el estado del código
 
 ![alt text](images/image-12.png)
+
